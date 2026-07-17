@@ -62,8 +62,10 @@ pipeline {
         steps{
                 echo "Hi hello wait for some time"
                 sleep 5
+                sh """
                 CONTAINER_IP=\$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' flask-app)
                 curl --retry 3 --retry-delay 2 --retry-connrefused http://\$CONTAINER_IP:5000
+                """
 }
 }
 
