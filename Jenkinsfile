@@ -52,7 +52,7 @@ pipeline {
                 docker run -d \
                 --name flask-app \
                 -p 5000:5000 \
-                flask-cicd:v1
+                ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
 
